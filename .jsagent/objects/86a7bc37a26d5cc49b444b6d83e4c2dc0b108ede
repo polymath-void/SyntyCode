@@ -1,0 +1,22 @@
+def format_class(formatter, name, properties, children_ids, indent_level, indent):
+    inherits = properties.get("inherits")
+    if isinstance(inherits, list) and inherits:
+        base = " : " + ", ".join(inherits)
+    elif inherits:
+        base = f" : {inherits}"
+    else:
+        base = ""
+    
+    code = f"{indent}class {name}{base} {{\n"
+    if children_ids:
+        parts = []
+        for cid in children_ids:
+            rendered = formatter.format_node(cid, indent_level + 1)
+            rendered = rendered.replace("public void __CLASS__", f"public {name}")
+            rendered = rendered.replace("public void __init__", f"public {name}")
+            parts.append(rendered)
+        code += "\n\n".join(parts) + "\n"
+    else:
+        code += f"{indent}    // empty\n"
+    code += f"{indent}}}"
+    return code

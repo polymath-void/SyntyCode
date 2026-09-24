@@ -1,0 +1,5 @@
+def translate_self_ref(name, keyword="this", separator="."):
+    """Translate self.X to the native instance reference."""
+    if name.startswith("self."):
+        return f"{keyword}{separator}{name[5:]}"
+    return name

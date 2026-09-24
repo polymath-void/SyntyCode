@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "syntycode"
+version = "2.0.0"
+authors = [
+  { name="SyntyCode Engine Foundation", email="admin@syntycode.org" },
+]
+description = "A universal Raw Tree-Sitter Architect Engine for autonomous AI and polyglot dependency mapping."
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Code Generators",
+]
+dependencies = []
+
+[project.urls]
+"Homepage" = "https://github.com/syntycode/SyntyCode"
+"Bug Tracker" = "https://github.com/syntycode/SyntyCode/issues"
+
+[project.scripts]
+syntycode = "syntycode.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["syntycode", "syntycode.*"]

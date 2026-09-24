@@ -1,0 +1,5 @@
+# 2. Decode the graph into physical codebase files
+syntycode decode MyProject python --out-dir src_py
+syntycode decode MyProject typescript --out-dir src_ts
+```
+

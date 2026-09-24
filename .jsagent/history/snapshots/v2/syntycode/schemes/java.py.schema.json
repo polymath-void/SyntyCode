@@ -1,0 +1,17 @@
+{
+  "file": "java.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "f11dc02228365597f66eaa23278796f98f953388",
+    "py_function_format_function": "39f4d9de63ebf1af4aa0bab9fed9ac81fceb225a",
+    "py_function_format_variable": "e2d7e5fd9cf189e721156e724ea22573b694914e",
+    "py_function_format_call": "8bd6049462b3d5c49baf54d33f6403bbefe63723",
+    "py_function_format_condition": "ee97fc8a0d29e16be6a2e52fac1292694ada0421",
+    "py_function_format_import": "426f9785b4fbdf57b48e333931f57116ea731541",
+    "py_function_format_class": "20ec04ac0112ac371e1ab393aba95f2f5a3eca24",
+    "py_function_format_loop": "f8b4e59c887ca89447d561c66f5de17a2e6d7b72",
+    "py_function_format_trycatch": "7dd54f96f80a611ff39204ea5b8ec618f62c0283",
+    "py_function_format_block": "388f9690a1b1d06d6fe48eb36d7f5562be0dcbd6",
+    "__skeleton__": "9ecb19bde133d6599f42def547d2dee0add57fe9"
+  }
+}

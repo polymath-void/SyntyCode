@@ -1,0 +1,9 @@
+def format_trycatch(formatter, name, properties, children_ids, indent_level, indent):
+    exc_type = properties.get("exception_type", "Exception")
+    if isinstance(exc_type, list):
+        exc_type = " | ".join(exc_type)
+    exc_var = properties.get("exception_var", "e") or "e"
+    
+    try_body = formatter.format_node(children_ids[0], indent_level + 1) if len(children_ids) > 0 else f"{indent}    // empty"
+    catch_body = formatter.format_node(children_ids[1], indent_level + 1) if len(children_ids) > 1 else f"{indent}    // empty"
+    return f"{indent}try {{\n{try_body}\n{indent}}} catch ({exc_type} {exc_var}) {{\n{catch_body}\n{indent}}}"

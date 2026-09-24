@@ -1,0 +1,10 @@
+def format_class(formatter, name, properties, children_ids, indent_level, indent):
+    inherits = properties.get("inherits")
+    if isinstance(inherits, list) and inherits: inherits = inherits[0]
+    body_lines = []
+    for cid in children_ids:
+        row = formatter.get_node(cid)
+        if row and row[0] == "Variable":
+            body_lines.append(formatter.format_node(cid, indent_level + 1))
+    body = "\n".join(body_lines) if body_lines else f"{indent}    // empty"
+    return f"{indent}struct {name} {{\n{body}\n{indent}}};"

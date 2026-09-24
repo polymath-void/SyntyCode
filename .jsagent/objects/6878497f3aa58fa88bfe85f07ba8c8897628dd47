@@ -1,0 +1,8 @@
+def format_dict(formatter, name, properties, children_ids, indent_level, indent):
+    keys = properties.get('keys', [])
+    pairs = []
+    for i, cid in enumerate(children_ids):
+        val = formatter.format_node(cid, 0).strip()
+        k = f"'{keys[i]}'" if isinstance(keys[i], str) else str(keys[i])
+        pairs.append(f"{k}: {val}")
+    return f"{indent}{{{', '.join(pairs)}}}"

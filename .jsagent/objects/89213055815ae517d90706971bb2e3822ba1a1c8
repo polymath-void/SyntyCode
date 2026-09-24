@@ -1,0 +1,48 @@
+import os, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from _helpers import (translate_self_ref, strip_self_from_inputs, translate_constructor_name,
+                      translate_super_call, translate_loop, translate_variable_value)
+
+LANG = "rust"
+
+/* __JAGE_REF_py_function_format_module__ */
+
+/* __JAGE_REF_py_function_format_function__ */
+
+/* __JAGE_REF_py_function_format_variable__ */
+
+/* __JAGE_REF_py_function_format_call__ */
+
+/* __JAGE_REF_py_function_format_condition__ */
+
+/* __JAGE_REF_py_function_format_import__ */
+
+/* __JAGE_REF_py_function_format_class__ */
+
+/* __JAGE_REF_py_function_format_loop__ */
+
+/* __JAGE_REF_py_function_format_trycatch__ */
+
+/* __JAGE_REF_py_function_format_block__ */
+
+/* __JAGE_REF_py_function_format_identifier__ */
+
+/* __JAGE_REF_py_function_format_return__ */
+
+/* __JAGE_REF_py_function_format_binaryop__ */
+
+/* __JAGE_REF_py_function_format_array__ */
+
+/* __JAGE_REF_py_function_format_dict__ */
+
+/* __JAGE_REF_py_function_format_throw__ */
+
+/* __JAGE_REF_py_function_format_member_access__ */
+
+def format_index_access(formatter, name, properties, children_ids, indent_level, indent):
+    if len(children_ids) >= 2:
+        arr = formatter.format_node(children_ids[0], 0).strip()
+        idx = formatter.format_node(children_ids[1], 0).strip()
+        return f"{indent}{arr}[{idx}]"
+    return f"{indent}{name}[0]"
+EXT = "rs"

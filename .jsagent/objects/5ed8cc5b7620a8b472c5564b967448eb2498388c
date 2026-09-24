@@ -1,0 +1,5 @@
+def format_decorator(formatter, name, properties, children_ids, indent_level, indent):
+    args = properties.get('args', [])
+    if args:
+        return f"{indent}@{name}({', '.join(args)})"
+    return f"{indent}@{name}"

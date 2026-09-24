@@ -1,0 +1,6 @@
+def format_variable(formatter, name, properties, children_ids, indent_level, indent):
+    clean_name = translate_self_ref(name, "s", ".")
+    val_code = translate_variable_value(properties, children_ids, formatter, "nil")
+    if clean_name.startswith("s."):
+        return f"{indent}{clean_name} = {val_code}"
+    return f"{indent}{clean_name} := {val_code}"

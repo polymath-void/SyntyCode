@@ -1,0 +1,10 @@
+def format_function(formatter, name, properties, children_ids, indent_level, indent):
+    raw_inputs = strip_self_from_inputs(properties.get("inputs", []))
+    inputs = ", ".join(raw_inputs)
+    fn_name = translate_constructor_name(name, "initialize")
+    
+    code = f"{indent}def {fn_name}({inputs})\n"
+    if children_ids:
+        code += "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) + "\n"
+    code += f"{indent}end"
+    return code

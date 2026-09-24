@@ -1,0 +1,4 @@
+def get_architect_root():
+    return os.getcwd()
+
+DB_PATH = os.path.join(get_architect_root(), "agy_nodeos.db")

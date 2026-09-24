@@ -1,0 +1,25 @@
+def format_class_definition(formatter, name, properties, children_ids, indent_level, indent):
+    # Children: identifier (name), block (body), maybe argument_list (superclasses)
+    body_nodes = []
+    base_nodes = []
+    class_name = name
+    
+    for cid in children_ids:
+        c_type, c_name, c_props = formatter.get_node(cid)
+        if c_props.get("field") == "name":
+            class_name = c_name
+        elif c_props.get("field") == "body":
+            body_nodes.append(cid)
+        elif c_props.get("field") == "superclasses":
+            base_nodes.append(cid)
+            
+    code = f"{indent}class {class_name}"
+    if base_nodes:
+        code += "(" + formatter.format_node(base_nodes[0], 0).strip() + ")"
+    code += ":\n"
+    
+    if body_nodes:
+        code += formatter.format_node(body_nodes[0], indent_level + 1)
+    else:
+        code += f"{indent}    pass"
+    return code

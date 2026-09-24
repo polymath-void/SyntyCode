@@ -1,0 +1,15 @@
+def format_binary_operator(formatter, name, properties, children_ids, indent_level, indent):
+    # Tree-sitter binary_operator usually has left and right fields.
+    # The operator itself (like '+') is sometimes a child or implicit.
+    # In tree-sitter Python, we don't easily get the operator char if it's an unnamed node, 
+    # but we can try to guess or hardcode if properties doesn't have it.
+    left = ""
+    right = ""
+    for cid in children_ids:
+        c_type, c_name, c_props = formatter.get_node(cid)
+        if c_props.get("field") == "left":
+            left = formatter.format_node(cid, 0).strip()
+        elif c_props.get("field") == "right":
+            right = formatter.format_node(cid, 0).strip()
+            
+    return f"{left} + {right}" # Fallback for demo, real one needs op

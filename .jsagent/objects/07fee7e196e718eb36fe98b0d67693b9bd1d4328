@@ -1,0 +1,9 @@
+def format_enum(formatter, name, properties, children_ids, indent_level, indent):
+    members = properties.get('members', [])
+    code = f"{indent}class {name}(Enum):\n"
+    if members:
+        for i, m in enumerate(members):
+            code += f"{indent}    {m} = {i}\n"
+    else:
+        code += f"{indent}    pass\n"
+    return code.rstrip('\n')

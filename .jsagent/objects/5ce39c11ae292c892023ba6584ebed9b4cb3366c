@@ -1,0 +1,14 @@
+## 3. Node Vocabulary & Properties
+Use the following `node_type` declarations carefully:
+*   **Architecture Nodes:** `FileNode`, `ClassNode`, `Function`
+    *   *Function Properties:* `{"inputs": ["arg1"], "is_method": true}`
+*   **Logic Nodes:** `Condition`, `Loop`, `Block`, `Return`, `ThrowNode`
+*   **Variable Nodes:** `Variable` (Left-hand side assignment)
+*   **Expression Nodes:** `Call`, `BinaryOp`, `Identifier`
+    *   *Call Properties:* `{"args": ["arg1"]}`
+    *   *BinaryOp Properties:* `{"operator": "=="}`
+*   **Data Structures:** `DictNode`, `ArrayNode`
+    *   *DictNode Properties:* `{"keys": ["key1"]}`
+*   **Access Nodes:** `MemberAccess`, `IndexAccess`
+    *   *IndexAccess Safety:* Pass `{"safe": true}` to gracefully handle missing dictionary keys in strict languages (transpiles to `.get()`).
+

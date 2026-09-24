@@ -1,0 +1,17 @@
+{
+  "file": "lua.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "21bffa772f47664676e7ed2d9312ea64a1dc7fdf",
+    "py_function_format_function": "ddde7a4195bac31927a4d94a4e17f58a7d6c4801",
+    "py_function_format_variable": "9ffaee5932f4dada3fe79b326ada73543b5843a4",
+    "py_function_format_call": "bc6d2a4bb8b4c7b5f9675d8d110617a5f8727bb8",
+    "py_function_format_condition": "4f7df1b09df1e51fdd4b1d6706588947bf4f5703",
+    "py_function_format_import": "eefa7f992b6d5ac4b6de24d68226170132bb8d2e",
+    "py_function_format_class": "e8e0460dba7a7914b940a9bd715b19584ddcbd2c",
+    "py_function_format_loop": "fb440db0879ad693a8811a38537896694a898310",
+    "py_function_format_trycatch": "0dd061d2af08edcb5802eba0a3965bfadb7b05b2",
+    "py_function_format_block": "b207d016a31106542a9662a650b0db4a34c4fb00",
+    "__skeleton__": "9e55dbb17ff9a79b3dfe8adb6201a74cbca2fb9c"
+  }
+}

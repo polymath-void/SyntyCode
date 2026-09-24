@@ -1,0 +1,17 @@
+{
+  "file": "kotlin.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "e6befbfe5d08db96c9b7209fd55b84ebf7edd2a3",
+    "py_function_format_function": "8ee08cf654bc81aa13fba67f6f98e06742f30db6",
+    "py_function_format_variable": "48588df53dc8645a15f470e45b40c055c9d1f6cd",
+    "py_function_format_call": "7640688bdf07da2b160c6db8a84eca1181bcf7fd",
+    "py_function_format_condition": "04d3040980f8ba3a5f34bbffb361d56dedea0182",
+    "py_function_format_import": "ac98d36b7c8fba3a3b24bbe5d3f0ba836257c160",
+    "py_function_format_class": "5772b0bd770811c29dd206c09137de2313e4b1fd",
+    "py_function_format_loop": "f8b4e59c887ca89447d561c66f5de17a2e6d7b72",
+    "py_function_format_trycatch": "3a0f05ab597d90afc2373c0a7de19edb3dc75c78",
+    "py_function_format_block": "388f9690a1b1d06d6fe48eb36d7f5562be0dcbd6",
+    "__skeleton__": "8df225caa2872b9456f5fb339e0e6fe86a6d912d"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "file": "javascript.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "157d698b48bc6dd98204b1232fb0a771ae11f76d",
+    "py_function_format_function": "38a3fabada320f9b2dc8be945d9d8f2a40337c60",
+    "py_function_format_variable": "13d61e68f803598c509b93b15ffa58291bd68280",
+    "py_function_format_call": "8bd6049462b3d5c49baf54d33f6403bbefe63723",
+    "py_function_format_condition": "ee97fc8a0d29e16be6a2e52fac1292694ada0421",
+    "py_function_format_import": "1250b1d226af5ab3b331a98d22dc70b2745f4b7c",
+    "py_function_format_class": "e39a7bdbf0df89d82986a13f96b4d4c19becb5ba",
+    "py_function_format_loop": "f8b4e59c887ca89447d561c66f5de17a2e6d7b72",
+    "py_function_format_trycatch": "718d40203fc6f617a49661bfe57bdb6360f8f75d",
+    "py_function_format_block": "388f9690a1b1d06d6fe48eb36d7f5562be0dcbd6",
+    "__skeleton__": "94bdbf0be671f263238304f264f535662b1e32b3"
+  }
+}

@@ -1,0 +1,3 @@
+def format_parameters(formatter, name, properties, children_ids, indent_level, indent):
+    params = [formatter.format_node(cid, 0).strip() for cid in children_ids]
+    return "(" + ", ".join(params) + ")"

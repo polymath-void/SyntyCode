@@ -1,0 +1,8 @@
+def format_call(formatter, name, properties, children_ids, indent_level, indent):
+    if name.startswith("self."):
+        clean_name = "$this->" + name[5:]
+    else:
+        clean_name = name
+    clean_name = translate_super_call(clean_name, "parent::__construct")
+    args = ", ".join([f"${a}" if not a.startswith("'") and not a.startswith('"') and not a.startswith("$") else a for a in properties.get("args", [])])
+    return f"{indent}{clean_name}({args});"

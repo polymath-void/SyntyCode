@@ -1,0 +1,14 @@
+### 2. AI Mutates JSON (Example)
+```json
+{
+  "module_name": "MyProject",
+  "files": [
+    {
+      "file_name": "main",
+      "language": "python",
+      "code": "print('Hello Production-Grade SyntyCode!')"
+    }
+  ]
+}
+```
+

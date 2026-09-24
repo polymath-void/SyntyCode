@@ -1,0 +1,3 @@
+def format_variable(formatter, name, properties, children_ids, indent_level, indent):
+    val_code = formatter.format_node(children_ids[0], 0) if children_ids else "NULL"
+    return f"{indent}void* {name} = {val_code};"

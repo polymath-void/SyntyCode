@@ -1,0 +1,13 @@
+{
+  "file": "SKILL.md",
+  "extension": ".md",
+  "pointers": {
+    "md_section_syntycode_engine__agent_operating_procedure": "b3a8840732c36439e59f29a10827c5bf60eb70d7",
+    "md_section_1__the_syntyjson_workflow": "f56c2ea70f1a2e7e48b36e461ccbf861a3c6dad1",
+    "md_section_2__ingestion___transpilation": "a3ed427d050aac63aae68f0a8d4c69b8d1c82beb",
+    "md_section_1__ingest_the_json_into_the_sqlite_graph": "de9e59cdb431fdd4fe76b4a470040d1e26311644",
+    "md_section_2__decode_the_graph_into_physical_codebase_files": "c66736c4d3c7f95b7a32ea70876f699453cfedd3",
+    "md_section_3__node_vocabulary___properties": "5ce39c11ae292c892023ba6584ebed9b4cb3366c",
+    "__skeleton__": "b4581a812322d84ef1cf8b64bfaec971927630ed"
+  }
+}

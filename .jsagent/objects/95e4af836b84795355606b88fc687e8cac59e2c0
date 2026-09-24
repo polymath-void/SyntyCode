@@ -1,0 +1,4 @@
+def format_identifier(formatter, name, properties, children_ids, indent_level, indent):
+    return f"{indent}{name}"
+
+# --- NEW NODE TYPES ---

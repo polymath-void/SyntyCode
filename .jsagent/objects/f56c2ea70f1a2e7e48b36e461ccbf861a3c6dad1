@@ -1,0 +1,35 @@
+## 1. The SyntyJSON Workflow
+Instead of writing tedious Python scripts or raw SQL transactions, you must author a declarative JSON file (e.g., `architecture.json`) representing the Abstract Syntax Tree (AST).
+
+```json
+{
+  "module": "MyProject",
+  "nodes": [
+    {
+      "node_type": "FileNode",
+      "name": "main",
+      "children": [
+        {
+          "node_type": "ClassNode",
+          "name": "User",
+          "children": [
+            {
+              "node_type": "Function",
+              "name": "login",
+              "properties": { "inputs": ["self"], "is_method": true },
+              "children": [
+                {
+                  "node_type": "Call",
+                  "name": "print",
+                  "properties": { "args": ["Success"] }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+

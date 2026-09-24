@@ -1,0 +1,10 @@
+def format_assignment(formatter, name, properties, children_ids, indent_level, indent):
+    left = ""
+    right = ""
+    for cid in children_ids:
+        c_type, c_name, c_props = formatter.get_node(cid)
+        if c_props.get("field") == "left":
+            left = formatter.format_node(cid, 0).strip()
+        elif c_props.get("field") == "right":
+            right = formatter.format_node(cid, 0).strip()
+    return f"{indent}{left} = {right}"

@@ -1,0 +1,21 @@
+def ingest_json(filepath: str):
+    if not os.path.exists(filepath):
+        print(f"Error: File '{filepath}' not found.")
+        sys.exit(1)
+        
+    with open(filepath, 'r') as f:
+        data = json.load(f)
+        
+    module_name = data.get("module")
+    if not module_name:
+        print("Error: JSON must contain a root 'module' key.")
+        sys.exit(1)
+        
+    nodes = data.get("nodes", [])
+    
+    with GraphContext(module_name) as ctx:
+        for node_data in nodes:
+            node = dict_to_node(node_data)
+            ctx.add_node(node)
+            
+    print(f"Successfully ingested module '{module_name}' into database.")

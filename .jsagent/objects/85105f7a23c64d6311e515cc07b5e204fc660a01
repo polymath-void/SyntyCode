@@ -1,0 +1,2 @@
+def format_module(formatter, name, children_ids, indent_level, indent):
+    return "\n\n".join([formatter.format_node(cid, indent_level) for cid in children_ids])

@@ -1,0 +1,7 @@
+def format_function(formatter, name, properties, children_ids, indent_level, indent):
+    code = f"{indent}global {name}\n{indent}{name}:\n"
+    code += f"{indent}    push rbp\n{indent}    mov rbp, rsp\n"
+    if children_ids:
+        code += "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) + "\n"
+    code += f"{indent}    pop rbp\n{indent}    ret"
+    return code

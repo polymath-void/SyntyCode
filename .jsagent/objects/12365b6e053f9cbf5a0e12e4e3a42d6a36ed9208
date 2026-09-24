@@ -1,0 +1,4 @@
+# SyntyCode: Raw Tree-Sitter Architect Engine
+
+SyntyCode is an advanced, language-agnostic software architecture engine built specifically for autonomous AI agents. It leverages the raw analytical power of the **Tree-Sitter** ontology inside an optimized SQLite Graph Database (`agy_nodeos.db`), providing models with unparalleled semantic search, relational architecture querying, and 100% loss-less transpilation across 50+ programming languages.
+

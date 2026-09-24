@@ -1,0 +1,4 @@
+def format_block(formatter, name, properties, children_ids, indent_level, indent):
+    if not children_ids:
+        return f"{indent}// empty block"
+    return "\n".join([formatter.format_node(cid, indent_level) for cid in children_ids])

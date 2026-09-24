@@ -1,0 +1,23 @@
+/* __JAGE_REF_py_function_format_module__ */
+
+/* __JAGE_REF_py_function_format_function__ */
+
+/* __JAGE_REF_py_function_format_variable__ */
+
+/* __JAGE_REF_py_function_format_call__ */
+
+/* __JAGE_REF_py_function_format_condition__ */
+
+
+/* __JAGE_REF_py_function_format_import__ */
+
+/* __JAGE_REF_py_function_format_class__ */
+
+/* __JAGE_REF_py_function_format_loop__ */
+
+/* __JAGE_REF_py_function_format_trycatch__ */
+
+/* __JAGE_REF_py_function_format_block__ */
+
+def format_identifier(formatter, name, properties, children_ids, indent_level, indent):
+    return f"{indent}{name}"

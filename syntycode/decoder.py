@@ -1,0 +1,227 @@
+import sqlite3
+import json
+import os
+import argparse
+import sys
+
+def get_architect_root():
+    return os.getcwd()
+
+def bind_architect_dependencies():
+    """Bind all dependencies in the architect sub-directories to sys.path."""
+    root = get_architect_root()
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    for item in os.listdir(root):
+        full_path = os.path.join(root, item)
+        if os.path.isdir(full_path) and full_path not in sys.path:
+            sys.path.append(full_path)
+
+class DynamicFormatter:
+    def __init__(self, scheme_module, db_path=None):
+        if db_path is None:
+            db_path = os.path.join(get_architect_root(), "agy_nodeos.db")
+        self.conn = sqlite3.connect(db_path)
+        self.cursor = self.conn.cursor()
+        self.scheme = scheme_module
+        
+    def preload_module(self, module_id):
+        self.nodes_mem = {}
+        self.cursor.execute("SELECT node_id, node_type, name, properties FROM ast_nodes WHERE module_id = ?", (module_id,))
+        for row in self.cursor.fetchall():
+            self.nodes_mem[row[0]] = (row[1], row[2], row[3])
+            
+        self.edges_mem = {}
+        self.cursor.execute("""
+            SELECT e.source_id, e.target_id 
+            FROM ast_edges e
+            JOIN ast_nodes n ON e.source_id = n.node_id
+            WHERE n.module_id = ? AND e.relation_type = 'CONTAINS'
+            ORDER BY e.sequence_index ASC
+        """, (module_id,))
+        for row in self.cursor.fetchall():
+            src, tgt = row
+            if src not in self.edges_mem:
+                self.edges_mem[src] = []
+            self.edges_mem[src].append(tgt)
+
+    def get_node(self, node_id):
+        if hasattr(self, 'nodes_mem'):
+            return self.nodes_mem.get(node_id)
+        self.cursor.execute("SELECT node_type, name, properties FROM ast_nodes WHERE node_id = ?", (node_id,))
+        return self.cursor.fetchone()
+
+    def get_children(self, parent_id):
+        if hasattr(self, 'edges_mem'):
+            return self.edges_mem.get(parent_id, [])
+        self.cursor.execute("""
+            SELECT target_id 
+            FROM ast_edges 
+            WHERE source_id = ? AND relation_type = 'CONTAINS'
+            ORDER BY sequence_index ASC
+        """, (parent_id,))
+        return [row[0] for row in self.cursor.fetchall()]
+
+    def format_node(self, node_id, indent_level=0):
+        row = self.get_node(node_id)
+        if not row:
+            return ""
+            
+        node_type, name, hash_props = row
+        properties = json.loads(hash_props) if hash_props else {}
+        children_ids = self.get_children(node_id)
+
+        # Native Zero-Translation: FileNodes natively store their absolute pristine code
+        if node_type == "FileNode":
+            if "raw_code" in properties:
+                return properties["raw_code"]
+            # Fallback for old file nodes without raw_code
+            return "\n\n".join([self.format_node(cid, indent_level) for cid in children_ids])
+
+        if node_type == "TextNode":
+            return properties.get("code", "")
+            
+        indent = "    " * indent_level
+        
+        # Determine native comment prefix
+        comment = getattr(self.scheme, "CONFIG", {}).get("comment_prefix", "//")
+        if hasattr(self.scheme, "CONFIG"):
+            comment = self.scheme.CONFIG.get("comment_prefix", comment)
+            
+        def fallback(n_type):
+            return lambda *a: f"{indent}{comment} {n_type} not implemented"
+        
+        # Try dynamic lookup first
+        format_fn_name = f"format_{node_type.lower()}"
+        if hasattr(self.scheme, format_fn_name):
+            return getattr(self.scheme, format_fn_name)(self, name, properties, children_ids, indent_level, indent)
+
+        # Legacy hardcoded types
+        if node_type == "Module":
+            return self.scheme.format_module(self, name, children_ids, indent_level, indent)
+        elif node_type == "Function":
+            return self.scheme.format_function(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "Variable":
+            return self.scheme.format_variable(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "Call":
+            return self.scheme.format_call(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "Condition":
+            return self.scheme.format_condition(self, name, children_ids, indent_level, indent)
+        elif node_type == "Import":
+            return self.scheme.format_import(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "ClassNode":
+            return self.scheme.format_class(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "Loop":
+            return self.scheme.format_loop(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "TryCatch":
+            return self.scheme.format_trycatch(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "Block":
+            return self.scheme.format_block(self, name, properties, children_ids, indent_level, indent)
+        elif node_type == "Identifier":
+            return self.scheme.format_identifier(self, name, properties, children_ids, indent_level, indent)
+            
+        # Natively reconstruct tree-sitter leaf nodes if they lack _text but have children (safety net)
+        if children_ids:
+            code = ""
+            for cid in children_ids:
+                code += self.format_node(cid, indent_level)
+            return code
+            
+        return f"{indent}{comment} Unknown node_type: {node_type}"
+
+    def decode_module(self, module_name, out_dir=None):
+        self.cursor.execute("""
+            SELECT m.module_id, n.node_id
+            FROM ast_nodes n
+            JOIN modules m ON n.module_id = m.module_id
+            WHERE n.node_type = 'Module' AND n.name = ?
+            ORDER BY m.last_updated DESC LIMIT 1
+        """, (module_name,))
+        row = self.cursor.fetchone()
+        if not row:
+            print(f"Module '{module_name}' not found.")
+            return None
+            
+        module_db_id = row[0]
+        module_node_id = row[1]
+        self.preload_module(module_db_id)
+        
+        # Check if the module has FileNode children
+        children = self.get_children(module_node_id)
+        file_nodes = [cid for cid in children if self.get_node(cid)[0] == 'FileNode']
+        
+        if out_dir and file_nodes:
+            import os
+            os.makedirs(out_dir, exist_ok=True)
+            for file_id in file_nodes:
+                _, file_name, _ = self.get_node(file_id)
+                # Decode the content of the file
+                file_content = self.format_node(file_id, 0)
+                
+                # Determine extension
+                ext = getattr(self.scheme, "EXT", "txt")
+                if not ext.startswith("."): ext = "." + ext
+                
+                filepath = os.path.join(out_dir, f"{file_name}{ext}")
+                with open(filepath, 'w') as f:
+                    f.write(file_content)
+                print(f"Generated -> {filepath}")
+            return f"Project generated at {out_dir}"
+        
+        # Single-file / default mode
+        code = self.format_node(module_node_id, 0)
+        
+        if out_dir and not file_nodes:
+            import os
+            os.makedirs(out_dir, exist_ok=True)
+            ext = getattr(self.scheme, "EXT", "txt")
+            if not ext.startswith("."): ext = "." + ext
+            filepath = os.path.join(out_dir, f"{module_name.lower()}{ext}")
+            with open(filepath, 'w') as f:
+                f.write(code)
+            print(f"Generated -> {filepath}")
+            
+        return code
+
+def load_schemes():
+    import importlib.util
+    schemes_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "schemes")
+    schemes = {}
+    if not os.path.exists(schemes_dir):
+        return schemes
+        
+    for filename in os.listdir(schemes_dir):
+        # Ignore helper files that start with '_'
+        if filename.endswith(".py") and not filename.startswith("_"):
+            lang = filename[:-3]
+            filepath = os.path.join(schemes_dir, filename)
+            
+            spec = importlib.util.spec_from_file_location(lang, filepath)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            
+            schemes[lang] = module
+    return schemes
+
+if __name__ == "__main__":
+    bind_architect_dependencies()
+    
+    available_schemes = load_schemes()
+    if not available_schemes:
+        print("No syntax schemes found in 'schemes'.")
+        sys.exit(1)
+        
+    parser = argparse.ArgumentParser(description="Universal NodeOS Decoder (Dynamic Schemes)")
+    parser.add_argument("--module", type=str, default="AuthModule", help="Name of the module to decode")
+    parser.add_argument("--target", type=str, choices=available_schemes.keys(), default="python", help="Target programming language scheme")
+    parser.add_argument("--db-path", type=str, default=None, help="Optional specific path to the agy_nodeos.db")
+    parser.add_argument("--out-dir", type=str, default=None, help="Output directory to fan-out generated files")
+    args = parser.parse_args()
+
+    scheme_module = available_schemes[args.target]
+    formatter = DynamicFormatter(scheme_module, args.db_path)
+    code = formatter.decode_module(args.module, out_dir=args.out_dir)
+    
+    if code and not args.out_dir:
+        print(f"--- Decoded {args.module} into {args.target.upper()} ---")
+        print(code)

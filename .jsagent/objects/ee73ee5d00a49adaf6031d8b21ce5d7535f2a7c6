@@ -1,0 +1,11 @@
+def format_trycatch(formatter, name, properties, children_ids, indent_level, indent):
+    # Go uses explicit error handling
+    exc_var = properties.get("exception_var", "err") or "err"
+    code = f"{indent}// Go: explicit error handling pattern\n"
+    if len(children_ids) > 0:
+        code += formatter.format_node(children_ids[0], indent_level) + "\n"
+    code += f"{indent}if {exc_var} != nil {{\n"
+    if len(children_ids) > 1:
+        code += formatter.format_node(children_ids[1], indent_level + 1) + "\n"
+    code += f"{indent}}}"
+    return code

@@ -1,0 +1,10 @@
+def format_call(formatter, name, properties, children_ids, indent_level, indent):
+    if name.startswith("self."):
+        clean_name = name[5:]
+    else:
+        clean_name = name
+    clean_name = translate_super_call(clean_name, "super")
+    args = ", ".join(properties.get("args", []))
+    if args:
+        return f"{indent}{clean_name}({args})"
+    return f"{indent}{clean_name}"

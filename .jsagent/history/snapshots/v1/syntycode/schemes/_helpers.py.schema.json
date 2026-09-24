@@ -1,0 +1,12 @@
+{
+  "file": "_helpers.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_translate_self_ref": "91e5f616755501f5a47c0ffa63e4416b8222f0d3",
+    "py_function_strip_self_from_inputs": "740f2b70f3aea979cd91ec4fcbf131a7478f3476",
+    "py_function_translate_constructor_name": "85fa4ffe5dbe3041c907da3a5dba5663638780ac",
+    "py_function_translate_loop": "9a8f8109f5b11c68cba5fc6d1c5847279d79a5c7",
+    "py_function_translate_args": "f05e7c6dd3968e523410b0da83d1d0b9726cf47c",
+    "__skeleton__": "fd9549a5e588d8c41ce8a3ee392a871038d959b9"
+  }
+}

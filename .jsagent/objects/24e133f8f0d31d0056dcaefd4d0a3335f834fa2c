@@ -1,0 +1,11 @@
+def format_trycatch(formatter, name, properties, children_ids, indent_level, indent):
+    exc_type = properties.get("exception_type", "StandardError")
+    exc_var = properties.get("exception_var", "e") or "e"
+    code = f"{indent}begin\n"
+    if len(children_ids) > 0:
+        code += formatter.format_node(children_ids[0], indent_level + 1) + "\n"
+    code += f"{indent}rescue {exc_type} => {exc_var}\n"
+    if len(children_ids) > 1:
+        code += formatter.format_node(children_ids[1], indent_level + 1) + "\n"
+    code += f"{indent}end"
+    return code

@@ -1,0 +1,17 @@
+{
+  "file": "swift.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "157d698b48bc6dd98204b1232fb0a771ae11f76d",
+    "py_function_format_function": "f27df06c731d8380306735b13cd94fa7a76b0ecd",
+    "py_function_format_variable": "b1a8fba152934a4c93a2212bcdbe3c7fb57c594d",
+    "py_function_format_call": "839fddae11d132ad3b1067d7204146ed516ce9ed",
+    "py_function_format_condition": "2d7c9c1ec45cea48bcc6d7e67b32ca9a0870789e",
+    "py_function_format_import": "d5cf2d757eaf68bd6e21d7ac79096b3c5ba41ca6",
+    "py_function_format_class": "9a919d3d72598cb59e53b1909a596910142cb3fb",
+    "py_function_format_loop": "f8b4e59c887ca89447d561c66f5de17a2e6d7b72",
+    "py_function_format_trycatch": "0d5415f8e656c8a4a33854a1a74daa1b565aaa12",
+    "py_function_format_block": "388f9690a1b1d06d6fe48eb36d7f5562be0dcbd6",
+    "__skeleton__": "84cf8881fc7b8d9bd0bc1ae0c00862d660cdb2f7"
+  }
+}

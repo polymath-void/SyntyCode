@@ -1,0 +1,13 @@
+def format_function(formatter, name, properties, children_ids, indent_level, indent):
+    raw_inputs = strip_self_from_inputs(properties.get("inputs", []))
+    inputs = ", ".join([f"{inp}: any" for inp in raw_inputs])
+    fn_name = translate_constructor_name(name, "constructor")
+    
+    if fn_name == "constructor":
+        code = f"{indent}{fn_name}({inputs}) {{\n"
+    else:
+        code = f"{indent}function {fn_name}({inputs}) {{\n"
+    if children_ids:
+        code += "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) + "\n"
+    code += f"{indent}}}"
+    return code

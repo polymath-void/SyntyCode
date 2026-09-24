@@ -1,0 +1,8 @@
+def format_loop(formatter, name, properties, children_ids, indent_level, indent):
+    condition = properties.get("condition", "")
+    header = translate_loop(name, condition, LANG)
+    code = f"{indent}{header}\n"
+    if children_ids:
+        code += "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) + "\n"
+    code += f"{indent}end"
+    return code

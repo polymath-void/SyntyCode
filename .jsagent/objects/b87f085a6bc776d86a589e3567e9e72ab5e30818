@@ -1,0 +1,24 @@
+def format_class(formatter, name, properties, children_ids, indent_level, indent):
+    inherits = properties.get("inherits")
+    
+    # Go: struct + receiver methods (no classes)
+    code = f"{indent}type {name} struct {{\n"
+    if inherits:
+        if isinstance(inherits, list):
+            for b in inherits:
+                code += f"{indent}    {b}  // embedded struct\n"
+        else:
+            code += f"{indent}    {inherits}  // embedded struct\n"
+    code += f"{indent}}}\n"
+    
+    if children_ids:
+        for cid in children_ids:
+            rendered = formatter.format_node(cid, indent_level)
+            # Convert func __NEW__ to func New<ClassName>
+            rendered = rendered.replace("func __NEW__", f"func New{name}")
+            # Convert regular funcs to receiver methods
+            if "func New" not in rendered and rendered.strip().startswith("func "):
+                fn_part = rendered.strip()[5:]  # strip "func "
+                rendered = f"{indent}func (s *{name}) {fn_part}"
+            code += "\n" + rendered
+    return code

@@ -1,0 +1,14 @@
+def format_variable(formatter, name, properties, children_ids, indent_level, indent):
+    var_name = name
+    # Handle normalized semantics
+    if properties.get("scope") == "instance":
+        var_name = f"self.{properties.get('field_name', name)}"
+        
+    if "raw_value" in properties and properties["raw_value"] is not None:
+        val_code = repr(properties["raw_value"])
+    elif "raw_value" in properties and properties["raw_value"] is None and not children_ids:
+        val_code = "None"
+    else:
+        val_code = formatter.format_node(children_ids[0], 0) if children_ids else "None"
+        
+    return f"{indent}{var_name} = {val_code}"

@@ -1,0 +1,72 @@
+import os
+import sys
+import json
+import argparse
+from .sdk import GraphContext, Node
+
+def dict_to_node(data: dict) -> Node:
+    """Recursively converts a JSON dictionary into a SyntyCode Node."""
+    node_type = data.get("node_type", "Unknown")
+    name = data.get("name", "")
+    properties = data.get("properties", {})
+    
+    node = Node(node_type, name, properties)
+    
+    for child_data in data.get("children", []):
+        child_node = dict_to_node(child_data)
+        node.add_child(child_node)
+        
+    return node
+
+/* __JAGE_REF_py_function_ingest_json__ */
+
+def main():
+    parser = argparse.ArgumentParser(description="SyntyCode Command Line Interface")
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    
+    # Ingest command
+    ingest_parser = subparsers.add_parser("ingest", help="Ingest a JSON file directly into the SyntyCode AST database")
+    ingest_parser.add_argument("filepath", help="Path to the JSON file")
+    
+    # Decode command wrapper
+    decode_parser = subparsers.add_parser("decode", help="Decode a module into a specific language")
+    decode_parser.add_argument("module", help="Module name to decode")
+    decode_parser.add_argument("target", help="Target language (e.g. python, typescript)")
+    decode_parser.add_argument("--out-dir", "-o", help="Output directory to write generated files")
+    
+    # Context Command
+    context_parser = subparsers.add_parser("context", help="Extract Architect Schema JSON for agent context")
+    context_parser.add_argument("module", help="Name of the module")
+    context_parser.add_argument("--lang", default="python", help="Target language (default: python)")
+    
+    # Ingest Architect Command
+    ingest_parser = subparsers.add_parser("ingest-architect", help="Ingest updated Architect Schema JSON")
+    ingest_parser.add_argument("filepath", help="Path to the Architect JSON file")
+    
+    args = parser.parse_args()
+    
+    if args.command == "ingest":
+        ingest_json(args.filepath)
+    elif args.command == "context":
+        from .architect_extractor import extract_architect_context
+        json_output = extract_architect_context(args.module, args.lang)
+        print(json_output)
+    elif args.command == "ingest-architect":
+        from .architect_ingestor import ingest_architect_json
+        module_name = ingest_architect_json(args.filepath)
+        print(f"Successfully integrated Architect module '{module_name}' into database.")
+    elif args.command == "decode":
+        from .decoder import DynamicFormatter, load_schemes
+        available_schemes = load_schemes()
+        if args.target not in available_schemes:
+            print(f"Error: Target '{args.target}' not found in available schemes.")
+            sys.exit(1)
+            
+        scheme_module = available_schemes[args.target]
+        formatter = DynamicFormatter(scheme_module)
+        formatter.decode_module(args.module, out_dir=args.out_dir)
+    else:
+        parser.print_help()
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,17 @@
+{
+  "file": "batch.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "5216ed24f8c225d66eaaf85b7d6ef76d7969dc79",
+    "py_function_format_function": "cc5d7e0e6c79ce73f6b9db0eeefe2a1de3e0bca9",
+    "py_function_format_variable": "5daa019405d3e27691e2dc4dd729908b32dd4d38",
+    "py_function_format_call": "bcf7610172bfb19cefc741ed2c729849779063c0",
+    "py_function_format_condition": "ccc460ab6b64c5454008915e4fbd874d8cdb5045",
+    "py_function_format_import": "f851392dd0b259e3a388742382800ed5c3b50107",
+    "py_function_format_class": "e8e0460dba7a7914b940a9bd715b19584ddcbd2c",
+    "py_function_format_loop": "8bd9ee76df4610456b8040d36b7335e7d929f520",
+    "py_function_format_trycatch": "e715bb6267b6ddcc5c679179154e4d1d92e3d922",
+    "py_function_format_block": "b207d016a31106542a9662a650b0db4a34c4fb00",
+    "__skeleton__": "9e55dbb17ff9a79b3dfe8adb6201a74cbca2fb9c"
+  }
+}

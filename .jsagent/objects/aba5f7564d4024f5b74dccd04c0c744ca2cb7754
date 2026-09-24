@@ -1,0 +1,5 @@
+def format_module(formatter, name, children_ids, indent_level, indent):
+    code = f"#include <iostream>\n#include <string>\n#include <vector>\n\nnamespace {name} {{\n"
+    code += "\n\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) + "\n"
+    code += "}"
+    return code

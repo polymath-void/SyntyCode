@@ -1,0 +1,24 @@
+def format_trycatch(formatter, name, properties, children_ids, indent_level, indent):
+    exc_type = properties.get("exception_type", "Exception")
+    if isinstance(exc_type, list):
+        exc_type = f"({', '.join(exc_type)})"
+        
+    exc_var = properties.get("exception_var")
+    
+    code = f"{indent}try:\n"
+    if len(children_ids) > 0:
+        code += formatter.format_node(children_ids[0], indent_level + 1)
+    else:
+        code += f"{indent}    pass\n"
+        
+    if exc_var:
+        code += f"\n{indent}except {exc_type} as {exc_var}:\n"
+    else:
+        code += f"\n{indent}except {exc_type}:\n"
+    
+    if len(children_ids) > 1:
+        code += formatter.format_node(children_ids[1], indent_level + 1)
+    else:
+        code += f"{indent}    pass"
+        
+    return code

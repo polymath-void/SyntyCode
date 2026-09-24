@@ -1,0 +1,4 @@
+def format_module(formatter, name, children_ids, indent_level, indent):
+    code = f"/* Module: {name} */\n#include <stdio.h>\n#include <stdbool.h>\n\n"
+    code += "\n\n".join([formatter.format_node(cid, indent_level) for cid in children_ids])
+    return code

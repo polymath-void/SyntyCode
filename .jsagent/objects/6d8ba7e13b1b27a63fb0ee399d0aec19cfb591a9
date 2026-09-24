@@ -1,0 +1,16 @@
+def format_trycatch(formatter, name, properties, children_ids, indent_level, indent):
+    # Rust uses Result<T, E> pattern, not try/catch
+    code = f"{indent}// Rust: using Result<T, E> pattern\n"
+    code += f"{indent}match (|| -> Result<(), Box<dyn std::error::Error>> {{\n"
+    if len(children_ids) > 0:
+        code += formatter.format_node(children_ids[0], indent_level + 1) + "\n"
+    code += f"{indent}    Ok(())\n"
+    code += f"{indent}}})() {{\n"
+    code += f"{indent}    Ok(_) => {{}},\n"
+    exc_var = properties.get("exception_var", "e") or "e"
+    code += f"{indent}    Err({exc_var}) => {{\n"
+    if len(children_ids) > 1:
+        code += formatter.format_node(children_ids[1], indent_level + 2) + "\n"
+    code += f"{indent}    }}\n"
+    code += f"{indent}}}"
+    return code

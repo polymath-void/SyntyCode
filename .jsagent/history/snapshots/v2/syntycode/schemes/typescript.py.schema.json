@@ -1,0 +1,26 @@
+{
+  "file": "typescript.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "157d698b48bc6dd98204b1232fb0a771ae11f76d",
+    "py_function_format_function": "df4b7077f84af2789c19aeb2094436aa6ee1c1f2",
+    "py_function_format_variable": "31927e4710c90d6d629bd8755b7807a70440d4d2",
+    "py_function_format_call": "2cf701becaa45af4bd5ba61ea7ec62340900ef15",
+    "py_function_format_condition": "ee97fc8a0d29e16be6a2e52fac1292694ada0421",
+    "py_function_format_import": "1250b1d226af5ab3b331a98d22dc70b2745f4b7c",
+    "py_function_format_class": "a569146bc245428b60927bc0587dd8490d0d5e72",
+    "py_function_format_loop": "26d688eea348386400788d2b15ca81ba36ff40d2",
+    "py_function_format_trycatch": "3243e4eb768f7747517267b781f72723560b45e1",
+    "py_function_format_block": "388f9690a1b1d06d6fe48eb36d7f5562be0dcbd6",
+    "py_function_format_identifier": "32f14767c5fc15e91d2f91e90c8a0e0b75278d66",
+    "py_function_format_return": "2a899dd5c16826c5f23a8e6693f44d1c5bc0b884",
+    "py_function_format_binaryop": "f6e5b5498b6a258e6c516df6cdfd9b1f37d71e38",
+    "py_function_format_unaryop": "90a80100c9c828381c097a85b4d120a0303a4604",
+    "py_function_format_comparison": "1365acab1d638c526f03cac670c4bb0fefd88089",
+    "py_function_format_array": "3d9354b73f3db2a6d98c18cc263adb432eadba98",
+    "py_function_format_dict": "6878497f3aa58fa88bfe85f07ba8c8897628dd47",
+    "py_function_format_member_access": "1d2f470e3a148e7d21d02590ea1c6cffca9820d6",
+    "py_function_format_index_access": "0eab94289e9072b2c97079e963f6a20d0c247a2e",
+    "__skeleton__": "c1715dbd669ca9d7dfa4c54b02d5c097fe5608c8"
+  }
+}

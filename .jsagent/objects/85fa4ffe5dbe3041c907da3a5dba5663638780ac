@@ -1,0 +1,5 @@
+def translate_constructor_name(name, target_name="constructor"):
+    """Translate __init__ to the target language constructor name."""
+    if name == "__init__":
+        return target_name
+    return name

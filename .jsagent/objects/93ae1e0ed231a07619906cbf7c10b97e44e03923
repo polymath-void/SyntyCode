@@ -1,0 +1,9 @@
+def bind_architect_dependencies():
+    """Bind all dependencies in the architect sub-directories to sys.path."""
+    root = get_architect_root()
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    for item in os.listdir(root):
+        full_path = os.path.join(root, item)
+        if os.path.isdir(full_path) and full_path not in sys.path:
+            sys.path.append(full_path)

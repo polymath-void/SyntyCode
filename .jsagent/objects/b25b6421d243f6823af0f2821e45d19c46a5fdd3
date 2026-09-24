@@ -1,0 +1,2 @@
+def format_call(formatter, name, properties, children_ids, indent_level, indent):
+    return f"{indent}call {name}"

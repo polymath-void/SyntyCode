@@ -1,0 +1,32 @@
+# Production-Grade Un-Parser for Tree-Sitter Python ASTs
+
+/* __JAGE_REF_py_function_format_module__ */
+
+/* __JAGE_REF_py_function_format_class_definition__ */
+
+/* __JAGE_REF_py_function_format_function_definition__ */
+
+/* __JAGE_REF_py_function_format_block__ */
+
+/* __JAGE_REF_py_function_format_expression_statement__ */
+
+/* __JAGE_REF_py_function_format_call__ */
+
+/* __JAGE_REF_py_function_format_argument_list__ */
+
+/* __JAGE_REF_py_function_format_parameters__ */
+
+/* __JAGE_REF_py_function_format_identifier__ */
+
+/* __JAGE_REF_py_function_format_binary_operator__ */
+
+/* __JAGE_REF_py_function_format_string__ */
+
+/* __JAGE_REF_py_function_format_attribute__ */
+
+/* __JAGE_REF_py_function_format_assignment__ */
+
+def format_pass_statement(formatter, name, properties, children_ids, indent_level, indent):
+    return f"{indent}pass"
+
+EXT = "py"

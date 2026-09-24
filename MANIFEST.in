@@ -1,0 +1,3 @@
+include syntycode/schema.sql
+recursive-include syntycode/schemes *
+recursive-include .agent_skill *

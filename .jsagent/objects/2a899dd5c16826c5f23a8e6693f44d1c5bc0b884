@@ -1,0 +1,5 @@
+def format_return(formatter, name, properties, children_ids, indent_level, indent):
+    if children_ids:
+        val = formatter.format_node(children_ids[0], 0).strip().rstrip(';')
+        return f"{indent}return {val};"
+    return f"{indent}return;"

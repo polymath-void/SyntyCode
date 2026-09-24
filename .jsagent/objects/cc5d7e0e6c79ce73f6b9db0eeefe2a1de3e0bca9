@@ -1,0 +1,7 @@
+def format_function(formatter, name, properties, children_ids, indent_level, indent):
+    # Batch simulates functions with labels
+    code = f":{name}\n"
+    if children_ids:
+        code += "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) + "\n"
+    code += f"{indent}EXIT /B 0\n"
+    return code

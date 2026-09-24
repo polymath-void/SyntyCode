@@ -1,0 +1,17 @@
+{
+  "file": "dart.py",
+  "extension": ".py",
+  "pointers": {
+    "py_function_format_module": "157d698b48bc6dd98204b1232fb0a771ae11f76d",
+    "py_function_format_function": "1f7a575d467a3c0f0c352c708ebc67dbf06a601f",
+    "py_function_format_variable": "8d718a1329f7f370664914130a12c6ad94b79176",
+    "py_function_format_call": "8bd6049462b3d5c49baf54d33f6403bbefe63723",
+    "py_function_format_condition": "ee97fc8a0d29e16be6a2e52fac1292694ada0421",
+    "py_function_format_import": "f45690247dfab1cb474498eb42c7f720c795ef89",
+    "py_function_format_class": "cd2c14af7713bcdfe8a6ff4f898ab13e33d43f65",
+    "py_function_format_loop": "f8b4e59c887ca89447d561c66f5de17a2e6d7b72",
+    "py_function_format_trycatch": "718d40203fc6f617a49661bfe57bdb6360f8f75d",
+    "py_function_format_block": "388f9690a1b1d06d6fe48eb36d7f5562be0dcbd6",
+    "__skeleton__": "b317978ef1462bf42606d5f4e3c8ed94cfe105f3"
+  }
+}
