@@ -96,3 +96,6 @@ def format_block(formatter, name, properties, children_ids, indent_level, indent
 
 def format_identifier(formatter, name, properties, children_ids, indent_level, indent):
     return f"{indent}{name}"
+
+EXT = "kt"
+CONFIG = {"comment_prefix": "//"}

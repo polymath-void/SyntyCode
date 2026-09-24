@@ -191,7 +191,7 @@ class GraphContext:
         
         # Ensure schema tables exist (if not run via schema.sql)
         cursor.execute("CREATE TABLE IF NOT EXISTS modules (module_id INTEGER PRIMARY KEY AUTOINCREMENT, module_name TEXT NOT NULL UNIQUE, last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP)")
-        cursor.execute("CREATE TABLE IF NOT EXISTS ast_nodes (node_id INTEGER PRIMARY KEY AUTOINCREMENT, module_id INTEGER NOT NULL REFERENCES modules(module_id) ON DELETE CASCADE, node_type TEXT NOT NULL, name TEXT NOT NULL, scope_path TEXT, properties TEXT DEFAULT '{}')")
+        cursor.execute("CREATE TABLE IF NOT EXISTS ast_nodes (node_id INTEGER PRIMARY KEY AUTOINCREMENT, module_id INTEGER NOT NULL REFERENCES modules(module_id) ON DELETE CASCADE, node_type TEXT NOT NULL, name TEXT NOT NULL, scope_path TEXT, properties TEXT DEFAULT '{}', heat_index INTEGER DEFAULT 0, x_coord REAL DEFAULT 0.0, y_coord REAL DEFAULT 0.0, is_remote INTEGER DEFAULT 0)")
         cursor.execute("CREATE TABLE IF NOT EXISTS ast_edges (source_id INTEGER NOT NULL REFERENCES ast_nodes(node_id) ON DELETE CASCADE, target_id INTEGER NOT NULL REFERENCES ast_nodes(node_id) ON DELETE CASCADE, relation_type TEXT NOT NULL, sequence_index INTEGER NOT NULL DEFAULT 0, PRIMARY KEY (source_id, target_id, relation_type, sequence_index))")
         
         cursor.execute("BEGIN TRANSACTION;")

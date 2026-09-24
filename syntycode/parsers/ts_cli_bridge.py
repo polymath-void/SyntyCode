@@ -5,6 +5,10 @@ import os
 import platform
 
 def find_library_path(lang: str) -> str:
+    # Termux alias mapping
+    if lang == "typescript": lang = "javascript"
+    if lang == "cpp": lang = "c"
+
     system = platform.system()
     lib_name = f"libtree-sitter-{lang}.so"
     if system == "Darwin":

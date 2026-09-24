@@ -46,7 +46,7 @@ def format_call(formatter, name, properties, children_ids, indent_level, indent)
     args = ", ".join(properties.get("args", []))
     return f"{indent}{call_name}({args})"
 
-def format_condition(formatter, name, children_ids, indent_level, indent):
+def format_condition(formatter, name, properties, children_ids, indent_level, indent):
     code = ""
     if len(children_ids) >= 2:
         check_code = formatter.format_node(children_ids[0], 0)
@@ -207,3 +207,4 @@ def format_throw(formatter, name, properties, children_ids, indent_level, indent
     exc = formatter.format_node(children_ids[0], 0).strip() if children_ids else name
     return f"{indent}raise {exc}"
 EXT = "py"
+CONFIG = {"comment_prefix": "#"}

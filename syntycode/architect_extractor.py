@@ -35,7 +35,7 @@ def extract_architect_context(module_name: str, target_lang: str = "python") -> 
     if file_nodes:
         for file_id in file_nodes:
             _, file_name, _ = formatter.get_node(file_id)
-            file_content = "\n\n".join([formatter.format_node(cid, 0) for cid in formatter.get_children(file_id)])
+            file_content = formatter.format_node(file_id, 0)
             
             architect_schema["files"].append({
                 "file_name": file_name,

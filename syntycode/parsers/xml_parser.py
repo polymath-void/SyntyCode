@@ -14,6 +14,15 @@ def xml_to_node(element) -> Node:
     if node_type == "identifier":
         name = element.text
         
+    # Heuristic for missing names (like import_statement)
+    if not name or name.strip() == "" or name == "unknown":
+        extracted = []
+        for child in element:
+            if child.tag in ("identifier", "dotted_name") and child.text:
+                extracted.append(child.text.strip())
+        if extracted:
+            name = ".".join(extracted)
+        
     synty_node = Node(node_type, name.strip() if name else "unknown")
     synty_node.properties = element.attrib
         

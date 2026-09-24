@@ -120,3 +120,4 @@ def format_identifier(formatter, name, properties, children_ids, indent_level, i
         clean_name = "false"
     return f"{indent}{clean_name}"
 EXT = "go"
+CONFIG = {"comment_prefix": "//"}

@@ -138,3 +138,4 @@ def format_pass_statement(formatter, name, properties, children_ids, indent_leve
     return f"{indent}pass"
 
 EXT = "py"
+CONFIG = {"comment_prefix": "#"}

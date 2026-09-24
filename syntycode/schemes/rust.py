@@ -159,3 +159,4 @@ def format_index_access(formatter, name, properties, children_ids, indent_level,
         return f"{indent}{arr}[{idx}]"
     return f"{indent}{name}[0]"
 EXT = "rs"
+CONFIG = {"comment_prefix": "//"}

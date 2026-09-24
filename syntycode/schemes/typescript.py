@@ -176,3 +176,4 @@ def format_throw(formatter, name, properties, children_ids, indent_level, indent
     exc = formatter.format_node(children_ids[0], 0).strip().rstrip(';') if children_ids else name
     return f"{indent}throw {exc};"
 EXT = "ts"
+CONFIG = {"comment_prefix": "//"}
