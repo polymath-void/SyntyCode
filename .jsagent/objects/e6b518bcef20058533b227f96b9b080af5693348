@@ -1,4 +1,0 @@
-def format_variable(formatter, name, properties, children_ids, indent_level, indent):
-    val_code = formatter.format_node(children_ids[0], 0) if children_ids else "inherit"
-    # Mapping variable assignment to CSS variables
-    return f"{indent}--{name}: {val_code};"

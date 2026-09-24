@@ -1,4 +1,0 @@
-## 🤖 The AI Read/Write Loop (Architect Schema)
-
-AI Agents manipulate the codebase via the **Architect Schema JSON**. This provides a perfectly constrained sandbox for LLMs to safely alter architecture without directly breaking complex file systems.
-

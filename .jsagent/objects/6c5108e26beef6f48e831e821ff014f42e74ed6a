@@ -1,4 +1,0 @@
-def format_call(formatter, name, properties, children_ids, indent_level, indent):
-    args = " ".join(properties.get("args", []))
-    # Mapping calls to CSS properties conceptually
-    return f"{indent}{name}: {args};"

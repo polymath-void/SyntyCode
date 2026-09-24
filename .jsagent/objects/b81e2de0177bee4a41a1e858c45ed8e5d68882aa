@@ -1,3 +1,0 @@
-def format_array(formatter, name, properties, children_ids, indent_level, indent):
-    elements = [formatter.format_node(cid, 0).strip() for cid in children_ids]
-    return f"{indent}vec![" + ", ".join(elements) + "]"

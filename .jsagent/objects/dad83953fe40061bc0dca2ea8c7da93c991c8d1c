@@ -1,4 +1,0 @@
-def format_unaryop(formatter, name, properties, children_ids, indent_level, indent):
-    op = properties.get('operator', 'not')
-    operand = formatter.format_node(children_ids[0], 0) if children_ids else ''
-    return f"{indent}{op} {operand}"

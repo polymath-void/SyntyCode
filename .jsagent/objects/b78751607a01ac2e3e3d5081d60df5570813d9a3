@@ -1,5 +1,0 @@
-def format_module(formatter, name, children_ids, indent_level, indent):
-    code = f"<!-- Module: {name} -->\n<html>\n<body>\n"
-    code += "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids])
-    code += "\n</body>\n</html>"
-    return code

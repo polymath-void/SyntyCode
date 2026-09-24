@@ -1,7 +1,0 @@
-def format_variable(formatter, name, properties, children_ids, indent_level, indent):
-    # Swift uses self. natively
-    clean_name = translate_self_ref(name, "self", ".")
-    val_code = translate_variable_value(properties, children_ids, formatter, "nil")
-    if clean_name.startswith("self."):
-        return f"{indent}{clean_name} = {val_code}"
-    return f"{indent}let {clean_name} = {val_code}"

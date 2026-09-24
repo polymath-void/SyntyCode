@@ -1,9 +1,0 @@
-def format_trycatch(formatter, name, properties, children_ids, indent_level, indent):
-    code = f"{indent}do {{\n"
-    if len(children_ids) > 0:
-        code += formatter.format_node(children_ids[0], indent_level + 1) + "\n"
-    code += f"{indent}}} catch {{\n"
-    if len(children_ids) > 1:
-        code += formatter.format_node(children_ids[1], indent_level + 1) + "\n"
-    code += f"{indent}}}"
-    return code

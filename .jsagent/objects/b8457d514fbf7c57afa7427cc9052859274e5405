@@ -1,9 +1,0 @@
-def format_string(formatter, name, properties, children_ids, indent_level, indent):
-    # usually has string_content
-    content = ""
-    for cid in children_ids:
-        c_type, c_name, c_props = formatter.get_node(cid)
-        if c_type == "string_content":
-            # The text is lost if we don't store it!
-            pass
-    return f"'{name}'" # Fallback

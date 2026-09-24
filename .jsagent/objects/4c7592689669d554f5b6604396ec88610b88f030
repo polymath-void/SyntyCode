@@ -1,7 +1,0 @@
-def format_variable(formatter, name, properties, children_ids, indent_level, indent):
-    if name.startswith("self."):
-        clean_name = "$this->" + name[5:]
-    else:
-        clean_name = "$" + name
-    val_code = translate_variable_value(properties, children_ids, formatter, "null")
-    return f"{indent}{clean_name} = {val_code};"

@@ -1,6 +1,0 @@
-### 1. Extract Context
-Extract the physical database context into a clean JSON for the AI.
-```bash
-syntycode context MyProject > architecture.json
-```
-

@@ -1,6 +1,0 @@
-def format_variable(formatter, name, properties, children_ids, indent_level, indent):
-    clean_name = translate_self_ref(name, "this", ".")
-    val_code = translate_variable_value(properties, children_ids, formatter, "null")
-    if not clean_name.startswith("this."):
-        return f"{indent}Object {clean_name} = {val_code};"
-    return f"{indent}{clean_name} = {val_code};"

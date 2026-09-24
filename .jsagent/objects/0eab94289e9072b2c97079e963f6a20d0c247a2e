@@ -1,8 +1,0 @@
-def format_index_access(formatter, name, properties, children_ids, indent_level, indent):
-    if len(children_ids) >= 2:
-        arr = formatter.format_node(children_ids[0], 0).strip()
-        if arr == "self":
-            arr = "this"
-        idx = formatter.format_node(children_ids[1], 0).strip()
-        return f"{indent}{arr}[{idx}]"
-    return f"{indent}{name}[0] // Error: IndexAccess missing children"

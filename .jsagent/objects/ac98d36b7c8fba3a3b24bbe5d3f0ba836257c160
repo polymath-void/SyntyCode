@@ -1,5 +1,0 @@
-def format_import(formatter, name, properties, children_ids, indent_level, indent):
-    names = properties.get("names", [])
-    if names:
-        return "\n".join([f"{indent}import {name}.{n}" for n in names])
-    return f"{indent}import {name}.*"

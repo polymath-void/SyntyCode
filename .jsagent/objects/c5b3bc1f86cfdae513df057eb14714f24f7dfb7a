@@ -1,7 +1,0 @@
-def format_call(formatter, name, properties, children_ids, indent_level, indent):
-    clean_name = translate_self_ref(name, "self", ".")
-    # Rust has no super() — comment it out
-    if "super()" in name:
-        return f"{indent}// Rust: no native super call"
-    args = ", ".join(properties.get("args", []))
-    return f"{indent}{clean_name}({args});"

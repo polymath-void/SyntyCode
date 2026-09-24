@@ -1,6 +1,0 @@
-### 3. Ingest Logic (Tree-Sitter XML Mapping)
-The engine reads the JSON, stores the pristine code string securely, and automatically queries the native Tree-Sitter CLI to extract and map every structural dependency (classes, logic, variables) natively into SQLite.
-```bash
-syntycode ingest-architect architecture.json
-```
-

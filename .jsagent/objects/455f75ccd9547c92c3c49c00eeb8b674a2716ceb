@@ -1,2 +1,0 @@
-def get_architect_root():
-    return os.getcwd()

@@ -1,9 +1,0 @@
-def format_identifier(formatter, name, properties, children_ids, indent_level, indent):
-    # Identifiers often contain raw expressions like `self.chain[i]`
-    from _helpers import translate_self_ref
-    clean_name = name.replace("self.", "this.")
-    if clean_name == "False":
-        clean_name = "false"
-    elif clean_name == "True":
-        clean_name = "true"
-    return f"{indent}{clean_name}"

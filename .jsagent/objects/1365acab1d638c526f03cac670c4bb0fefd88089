@@ -1,5 +1,0 @@
-def format_comparison(formatter, name, properties, children_ids, indent_level, indent):
-    op = properties.get('operator', '===')
-    left = formatter.format_node(children_ids[0], 0) if len(children_ids) > 0 else ''
-    right = formatter.format_node(children_ids[1], 0) if len(children_ids) > 1 else ''
-    return f"{indent}{left} {op} {right}"

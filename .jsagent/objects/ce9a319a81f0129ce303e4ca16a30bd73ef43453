@@ -1,4 +1,0 @@
-def format_member_access(formatter, name, properties, children_ids, indent_level, indent):
-    obj = formatter.format_node(children_ids[0], 0).strip() if children_ids else "self"
-    member = properties.get('member', name)
-    return f"{indent}{obj}.{member}"

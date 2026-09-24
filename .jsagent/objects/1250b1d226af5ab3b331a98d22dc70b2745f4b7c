@@ -1,5 +1,0 @@
-def format_import(formatter, name, properties, children_ids, indent_level, indent):
-    names = properties.get("names", [])
-    if names:
-        return f"{indent}import {{ {', '.join(names)} }} from \"{name}\";"
-    return f"{indent}import \"{name}\";"

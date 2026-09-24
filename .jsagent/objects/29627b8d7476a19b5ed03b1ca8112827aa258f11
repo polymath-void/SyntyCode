@@ -1,7 +1,0 @@
-def format_interface(formatter, name, properties, children_ids, indent_level, indent):
-    code = f"{indent}class {name}(ABC):\n"
-    if children_ids:
-        code += "\n\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids])
-    else:
-        code += f"{indent}    pass"
-    return code

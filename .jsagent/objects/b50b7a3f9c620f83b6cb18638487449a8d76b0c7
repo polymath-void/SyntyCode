@@ -1,8 +1,0 @@
-def format_variable(formatter, name, properties, children_ids, indent_level, indent):
-    # Ruby uses @ for instance variables
-    if name.startswith("self."):
-        clean_name = "@" + name[5:]
-    else:
-        clean_name = name
-    val_code = translate_variable_value(properties, children_ids, formatter, "nil")
-    return f"{indent}{clean_name} = {val_code}"

@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# SyntyCode & Database Artifacts
+agy_nodeos.db
+agy_nodeos.db-journal
+context.json
+architecture.json
+cleaved_*.json
+out_test/
+out_prod/
+*.log
+
+# polymath-jage exclusions (optional, just in case)
+.jsagent/

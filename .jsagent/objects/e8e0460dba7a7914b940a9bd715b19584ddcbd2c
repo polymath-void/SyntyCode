@@ -1,5 +1,0 @@
-def format_class(formatter, name, properties, children_ids, indent_level, indent):
-    inherits = properties.get("inherits")
-    if isinstance(inherits, list) and inherits: inherits = inherits[0]
-    body = "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) if children_ids else ""
-    return f"{indent}# class {name}\n{body}"

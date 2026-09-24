@@ -1,7 +1,0 @@
-## 📦 Dependencies
-
-SyntyCode is engineered to run universally in restricted environments (like Android Termux).
-- **Python 3.8+** (For the Decoder & CLI)
-- **SQLite3** (For the Relational Graph DB)
-- **Termux Tree-Sitter Core**: `pkg install tree-sitter tree-sitter-parsers`
-- *

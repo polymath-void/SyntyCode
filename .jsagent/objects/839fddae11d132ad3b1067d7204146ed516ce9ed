@@ -1,5 +1,0 @@
-def format_call(formatter, name, properties, children_ids, indent_level, indent):
-    clean_name = translate_self_ref(name, "self", ".")
-    clean_name = translate_super_call(clean_name, "super.init")
-    args = ", ".join(properties.get("args", []))
-    return f"{indent}{clean_name}({args})"

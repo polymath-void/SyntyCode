@@ -1,9 +1,0 @@
-{
-  "file": "decoder.py",
-  "extension": ".py",
-  "pointers": {
-    "py_function_get_architect_root": "455f75ccd9547c92c3c49c00eeb8b674a2716ceb",
-    "py_function_bind_architect_dependencies": "93ae1e0ed231a07619906cbf7c10b97e44e03923",
-    "__skeleton__": "2de34bf10b5c07c8d8359bfb737445801d70a54d"
-  }
-}

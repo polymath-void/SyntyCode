@@ -1,3 +1,0 @@
-def format_call(formatter, name, properties, children_ids, indent_level, indent):
-    args = " ".join(properties.get("args", []))
-    return f"{indent}{name} {args}"

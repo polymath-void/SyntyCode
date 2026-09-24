@@ -1,8 +1,0 @@
-{
-  "file": "sdk.py",
-  "extension": ".py",
-  "pointers": {
-    "py_function_get_architect_root": "7f4089b65b5507189da184f930d6da0bb59a609a",
-    "__skeleton__": "c0d43e0af932fa5230c6edd1aacaae6090b393d8"
-  }
-}

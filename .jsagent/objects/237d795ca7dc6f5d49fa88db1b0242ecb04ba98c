@@ -1,7 +1,0 @@
-def format_binaryop(formatter, name, properties, children_ids, indent_level, indent):
-    if len(children_ids) >= 2:
-        left = formatter.format_node(children_ids[0], 0).strip().rstrip(';')
-        right = formatter.format_node(children_ids[1], 0).strip().rstrip(';')
-        op = properties.get("operator", "+")
-        return f"{indent}{left} {op} {right}"
-    return f"{indent}// BinaryOp missing children"

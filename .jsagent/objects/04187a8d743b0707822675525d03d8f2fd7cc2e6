@@ -1,7 +1,0 @@
-def format_identifier(formatter, name, properties, children_ids, indent_level, indent):
-    clean_name = name
-    if clean_name == "True":
-        clean_name = "true"
-    elif clean_name == "False":
-        clean_name = "false"
-    return f"{indent}{clean_name}"

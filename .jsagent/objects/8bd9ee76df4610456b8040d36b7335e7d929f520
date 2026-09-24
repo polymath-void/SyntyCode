@@ -1,4 +1,0 @@
-def format_loop(formatter, name, properties, children_ids, indent_level, indent):
-    condition = properties.get("condition", "true")
-    body = "\n".join([formatter.format_node(cid, indent_level + 1) for cid in children_ids]) if children_ids else f"{indent}    // empty"
-    return f"{indent}# loop {condition}\n{body}"

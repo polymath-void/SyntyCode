@@ -1,8 +1,0 @@
-def format_condition(formatter, name, children_ids, indent_level, indent):
-    code = ""
-    if len(children_ids) >= 2:
-        check_code = formatter.format_node(children_ids[0], 0).replace(';', '')
-        code += f"{indent}@media ({check_code}) {{\n"
-        code += formatter.format_node(children_ids[1], indent_level + 1) + "\n"
-        code += f"{indent}}}"
-    return code

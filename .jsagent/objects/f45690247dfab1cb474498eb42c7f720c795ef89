@@ -1,2 +1,0 @@
-def format_import(formatter, name, properties, children_ids, indent_level, indent):
-    return f"{indent}import '{name}';"

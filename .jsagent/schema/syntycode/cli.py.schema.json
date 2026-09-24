@@ -1,8 +1,0 @@
-{
-  "file": "cli.py",
-  "extension": ".py",
-  "pointers": {
-    "py_function_ingest_json": "952496de6d54a9b41673eb41bee6a225c9a229e9",
-    "__skeleton__": "27e48a60973378be9109f118e640311f5f4a6b7a"
-  }
-}
