@@ -1,6 +1,9 @@
 name: Publish SyntyCode to PyPI
 
 on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers when a tag like v2.0.1 is pushed
   release:
     types: [published]
   workflow_dispatch:
@@ -35,7 +38,3 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
-        # No password needed if you configure PyPI Trusted Publishing!
-        # If using a legacy token instead, uncomment the lines below:
-        # with:
-        #   password: ${{ secrets.PYPI_API_TOKEN }}
